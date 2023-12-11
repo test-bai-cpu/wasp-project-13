@@ -1,0 +1,34 @@
+robot_namespace: panda
+franka:
+    frame:
+        source: panda_link0
+        target: panda_EE
+    topic:
+        contact: /panda/franka_state_controller/F_ext
+
+controller:
+    name: cartesian_impedance_controller
+    topic:
+        control: /equilibrium_pose
+
+hand:
+    name: QB Soft Hand
+    topic:
+        join_state: /qbhand1/control/joint_states
+        control: /qbhand1/control/qbhand1_synergy_trajectory_controller/command
+    joint_names: ['qbhand1_synergy_joint']
+
+reset:
+    controller_manager:
+        load_controller: /panda/controller_manager/load_controller
+        switch_controller: /panda/controller_manager/switch_controller
+    controller:
+        name: position_joint_trajectory_controller
+        topic:
+            control: /panda/position_joint_trajectory_controller/command
+    joint_names: ['panda_joint1', 'panda_joint2', 'panda_joint3',
+                  'panda_joint4', 'panda_joint5', 'panda_joint6',
+                  'panda_joint7']
+    joint_positions: [ 1.0e-6, -0.523598776, -1.0e-6,
+                      -2.35594438, -1.0e-6,   1.570796327,
+                       0.785398163]
