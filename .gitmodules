@@ -1,0 +1,3 @@
+[submodule "soft_hand_grasping"]
+	path = soft_hand_grasping
+	url = https://gitsvn-nt.oru.se/snyg/soft_hand_grasping.git
