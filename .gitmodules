@@ -1,0 +1,3 @@
+[submodule "Gen6D-forgrasp"]
+	path = Gen6D-forgrasp
+	url = https://github.com/test-bai-cpu/Gen6D-forgrasp.git
