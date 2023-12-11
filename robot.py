@@ -25,7 +25,7 @@ class MyQBSoftHand(QBSoftHand):
 if __name__ == '__main__':
     rospy.init_node('robot', anonymous=True)
 
-    config = load_config("franka_qbhand.yaml")
+    config = load_config("./config/franka_qbhand.yaml")
     franka = FrankaQBSoftHand(config)
     hand = MyQBSoftHand(config.hand)
     rospy.sleep(2)

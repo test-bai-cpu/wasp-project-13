@@ -9,7 +9,7 @@ from utils import load_config, visual_image, get_pointcloud, visual_pointcloud
 if __name__ == '__main__':
     rospy.init_node('camera', anonymous=True)
 
-    config = load_config("./camera.yaml")
+    config = load_config("./config/camera.yaml")
     camera = KinectAzure(config)
 
     bbox_top_left = (895, 945)
