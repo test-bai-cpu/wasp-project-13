@@ -28,6 +28,12 @@ if __name__ == '__main__':
         cmd = int(input("[1: Take one / 2: Take continuous / 3: EXIT] CMD: "))
         if cmd == 1:
             color_image, depth_image = camera.get_rgbd_images()
+
+            # color_image = color_image[350:800, 700:1150]
+            color_image = color_image[300:750, 700:1150]
+            # color_image = color_image
+            visual_image(color_image, depth_image, save=True)
+            continue
             # Crop image
             color_image[:bbox_top_left[1], :] = 0
             color_image[bbox_top_left[1]+bbox_width[1]:, :] = 0
@@ -58,6 +64,14 @@ if __name__ == '__main__':
         elif cmd == 2:
             while True:
                 color_image, depth_image = camera.get_rgbd_images()
+                color_image[:bbox_top_left[1], :] = 0
+                color_image[bbox_top_left[1]+bbox_width[1]:, :] = 0
+                color_image[:, :bbox_top_left[0]] = 0
+                color_image[:, bbox_top_left[0]+bbox_width[0]:] = 0
+                depth_image[:bbox_top_left[1], :] = 0
+                depth_image[bbox_top_left[1]+bbox_width[1]:, :] = 0
+                depth_image[:, :bbox_top_left[0]] = 0
+                depth_image[:, bbox_top_left[0]+bbox_width[0]:] = 0
                 visual_image(color_image, depth_image)
         elif cmd == 3:
             rospy.signal_shutdown("Ctrl+c")
